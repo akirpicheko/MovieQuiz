@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="cHT-tS-99d">
-                                <rect key="frame" x="0.0" y="-5" width="414" height="901"/>
+                                <rect key="frame" x="-9" y="-24" width="432" height="944"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="top" secondItem="cHT-tS-99d" secondAttribute="top" constant="5" id="1WA-VY-Wlg"/>
-                            <constraint firstItem="cHT-tS-99d" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="8p8-on-Cy3"/>
-                            <constraint firstAttribute="trailing" secondItem="cHT-tS-99d" secondAttribute="trailing" id="JNS-4r-csw"/>
-                            <constraint firstItem="cHT-tS-99d" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="T9x-Hf-KDW"/>
+                            <constraint firstAttribute="top" secondItem="cHT-tS-99d" secondAttribute="top" constant="24" id="1WA-VY-Wlg"/>
+                            <constraint firstItem="cHT-tS-99d" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="58" id="8p8-on-Cy3"/>
+                            <constraint firstAttribute="trailing" secondItem="cHT-tS-99d" secondAttribute="trailing" constant="-9" id="JNS-4r-csw"/>
+                            <constraint firstItem="cHT-tS-99d" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-9" id="T9x-Hf-KDW"/>
                         </constraints>
                     </view>
                 </viewController>
