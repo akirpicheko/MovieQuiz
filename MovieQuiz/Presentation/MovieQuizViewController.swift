@@ -1,7 +1,7 @@
 import UIKit
 
+
 final class MovieQuizViewController: UIViewController {
-    
     // MARK: - IB Outlets
     @IBOutlet private var counterLabel: UILabel!
     @IBOutlet private var textLabel: UILabel!
@@ -10,7 +10,7 @@ final class MovieQuizViewController: UIViewController {
     
     @IBOutlet private var noButton: UIButton!
     @IBOutlet private var yesButton: UIButton!
-    
+  
     // MARK: - Private Properties
     private struct QuizQuestion {
         let image: String
@@ -143,7 +143,8 @@ final class MovieQuizViewController: UIViewController {
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else {return}
             UIView.animate(withDuration: 0.5) {
                 self.imageView.layer.borderWidth = 0
             }
@@ -157,7 +158,8 @@ final class MovieQuizViewController: UIViewController {
             title: result.title,
             message: result.text,
             preferredStyle: .alert)
-        let action = UIAlertAction(title: result.buttonText, style: .default) { _ in
+        let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
+            guard let self = self else {return}
             self.currentQuestionIndex = 0
             self.correctAnswers = 0
             
