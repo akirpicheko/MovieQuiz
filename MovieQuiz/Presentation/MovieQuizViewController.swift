@@ -12,6 +12,8 @@ final class MovieQuizViewController: UIViewController,
     @IBOutlet private var noButton: UIButton!
     @IBOutlet private var yesButton: UIButton!
     
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: - Private Properties
     private var currentQuestionIndex: Int = .zero
     private var correctAnswers: Int = .zero
@@ -94,6 +96,11 @@ final class MovieQuizViewController: UIViewController,
         )
     }
     
+    private func showLoadingIndicator() {
+        activityIndicator.isHidden = false // говорим, что индикатор загрузки не скрыт
+        activityIndicator.startAnimating() // включаем анимацию
+    }
+    
     private func showAnswerResult(isCorrect: Bool) {
         if isCorrect {
             correctAnswers += 1
@@ -142,8 +149,6 @@ final class MovieQuizViewController: UIViewController,
             currentQuestionIndex += 1
             questionFactory.requestNextQuestion()
             
-            
         }
     }
-    
 }
