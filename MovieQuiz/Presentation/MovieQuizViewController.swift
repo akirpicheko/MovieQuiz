@@ -70,29 +70,6 @@ final class MovieQuizViewController: UIViewController,
         present(alert, animated: true, completion: nil)
     }
     
-    func changeStateButton(isEnabled: Bool) {
-        noButton.isEnabled = isEnabled
-        yesButton.isEnabled = isEnabled
-    }
-    
-    func showAnswerResult(isCorrect: Bool) {
-        if isCorrect {
-            correctAnswers += 1
-        }
-        changeStateButton(isEnabled: false)
-        imageView.layer.masksToBounds = true
-        imageView.layer.borderWidth = 8
-        imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            guard let self = self else {return}
-            UIView.animate(withDuration: 0.5) {
-                self.imageView.layer.borderWidth = 0
-            }
-            self.showNextQuestionOrResults()
-            self.changeStateButton(isEnabled: true)
-        }
-    }
-    
     func show(quiz result: QuizResultsViewModel){
         let alertModel = AlertModel(
             title: result.title,
@@ -115,6 +92,29 @@ final class MovieQuizViewController: UIViewController,
             question: model.text,
             questionNumber: "\(currentQuestionIndex + 1)/\(questionsAmount)"
         )
+    }
+    
+    private func showAnswerResult(isCorrect: Bool) {
+        if isCorrect {
+            correctAnswers += 1
+        }
+        changeStateButton(isEnabled: false)
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 8
+        imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else {return}
+            UIView.animate(withDuration: 0.5) {
+                self.imageView.layer.borderWidth = 0
+            }
+            self.showNextQuestionOrResults()
+            self.changeStateButton(isEnabled: true)
+        }
+    }
+    
+    private func changeStateButton(isEnabled: Bool) {
+        noButton.isEnabled = isEnabled
+        yesButton.isEnabled = isEnabled
     }
     
     private func show(quiz step: QuizStepViewModel){
