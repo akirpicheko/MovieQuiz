@@ -4,15 +4,15 @@ final class MovieQuizViewController: UIViewController,
                                      QuestionFactoryDelegate, AlertPresenterDelegate{
     
     // MARK: - IB Outlets
-    @IBOutlet private var counterLabel: UILabel!
-    @IBOutlet private var textLabel: UILabel!
+    @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet private weak var textLabel: UILabel!
     
-    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     
-    @IBOutlet private var noButton: UIButton!
-    @IBOutlet private var yesButton: UIButton!
+    @IBOutlet private weak var noButton: UIButton!
+    @IBOutlet private weak var yesButton: UIButton!
     
-    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Private Properties
     private var currentQuestionIndex: Int = .zero
@@ -99,6 +99,27 @@ final class MovieQuizViewController: UIViewController,
     private func showLoadingIndicator() {
         activityIndicator.isHidden = false // говорим, что индикатор загрузки не скрыт
         activityIndicator.startAnimating() // включаем анимацию
+    }
+    
+    private func hideLoadingIndicator() {
+            activityIndicator.isHidden = true
+        }
+    
+    private func showNetworkError(message: String) {
+        hideLoadingIndicator()
+        
+        let model = AlertModel(title: "Ошибка",
+                               message: message,
+                               buttonText: "Попробовать еще раз") { [weak self] in
+            guard let self = self else { return }
+            
+            self.currentQuestionIndex = 0
+            self.correctAnswers = 0
+            
+            self.questionFactory.requestNextQuestion()
+        }
+        
+        alertPresenter?.showAlert(model: model)
     }
     
     private func showAnswerResult(isCorrect: Bool) {
