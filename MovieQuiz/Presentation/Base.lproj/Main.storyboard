@@ -40,6 +40,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FCJ-Ls-itE" userLabel="Preview Image">
                                         <rect key="frame" x="0.0" y="45.666666666666686" width="350" height="525"/>
                                         <color key="backgroundColor" name="YP White"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Poster"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FCJ-Ls-itE" secondAttribute="height" multiplier="2:3" id="j4g-lg-INc"/>
                                         </constraints>
