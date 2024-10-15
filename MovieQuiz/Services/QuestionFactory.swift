@@ -73,19 +73,6 @@ class QuestionFactory: QuestionFactoryProtocol {
         }
     }
     
-//    func requestNextQuestion() {
-//        guard let index = (0..<questions.count).randomElement() else {
-//            delegate?.didReceiveNextQuestion(question: nil)
-//            return
-//        }
-//
-//        let question = questions[safe: index]
-//        delegate?.didReceiveNextQuestion(question: question)
-//    }
-//    
-//    func setup(delegate: QuestionFactoryDelegate) {
-//           self.delegate = delegate
-//       }
     func requestNextQuestion() {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
