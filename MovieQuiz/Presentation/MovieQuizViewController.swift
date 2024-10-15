@@ -89,7 +89,7 @@ final class MovieQuizViewController: UIViewController,
     }
     
     func didFailToLoadData(with error: Error) {
-        showNetworkError(message: <#T##String#>)
+        showNetworkError(message: error.localizedDescription)
     }
     
     func didLoadDataFromServer() {
@@ -112,8 +112,8 @@ final class MovieQuizViewController: UIViewController,
     }
     
     private func hideLoadingIndicator() {
-            activityIndicator.isHidden = true
-        }
+        activityIndicator.isHidden = true
+    }
     
     private func showNetworkError(message: String) {
         hideLoadingIndicator()
