@@ -11,6 +11,7 @@ import XCTest
 @testable import MovieQuiz
 
 final class MovieQuizViewControllerMock: MovieQuizViewControllerProtocol {
+    
     func changeStateButton(isEnabled: Bool) {
     
     }
